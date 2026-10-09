@@ -71,7 +71,7 @@ qemu-system-x86_64 -enable-kvm -m 2048 -bios /usr/share/ovmf/OVMF.fd -drive file
 
 Screenshot
 
-![image](/home/xabi/uefi-learning-journey/HelloUEFI.png)
+![image](./HelloUEFI.png)
 
 ## Day 2: Update PCI Enumeration Works! (2026-10-09)
 
@@ -95,6 +95,6 @@ This proves  I understand:
 
 Day 2 Screenshot
 
-![image](/home/xabi/uefi-learning-journey/PciScan.png)
+![DeviceId and VendorId](./PciScan.png)
   ```
 
