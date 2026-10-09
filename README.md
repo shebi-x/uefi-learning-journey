@@ -64,7 +64,7 @@ qemu-system-x86_64 -enable-kvm -m 2048 -bios /usr/share/ovmf/OVMF.fd -drive file
 Screenshot
 ![UEFI Hello World in QEMU](./HelloUEFI.png)
 
-## Day 2: Update: PCI Enumeration Works! (2026-10-09)
+## Day 2: Update PCI Enumeration Works! (2026-10-09)
 
 Successfuly built and ran my custom `PciScan.efi` in QEMU. The application uses the `EFI_PCI_IO_PROTOCOL` to read the configuration space of all PCI devices.
 
