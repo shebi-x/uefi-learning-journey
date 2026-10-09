@@ -62,4 +62,24 @@ qemu-system-x86_64 -enable-kvm -m 2048 -bios /usr/share/ovmf/OVMF.fd -drive file
 
 
 Screenshot
-![UEFI Hello World in QEMU](https://github.com/shebi-x/uefi-learning-journey/blob/main/HelloUEFI.png)
+![UEFI Hello World in QEMU](./HelloUEFI.png)
+
+## Day 2: Update: PCI Enumeration Works! (2026-10-09)
+
+Successfuly built and ran my custom `PciScan.efi` in QEMU. The application uses the `EFI_PCI_IO_PROTOCOL` to read the configuration space of all PCI devices.
+
+Output in QEMU UEFI Shell:
+- `0x8086:0x1237` (Intel Host Bridge)
+- `0x8086:0x7000` (Intel ISA Bridge)
+- `0x8086:0x7010` (Intel IDE Controller)
+- `0x8086:0x7113` (Intel ACPI Controller)
+- `0x1234:0x1111` (QEMU Virtual VGA)
+
+This proves  I understand:
+1. How to locate handles by protocol (`LocateHandleBuffer`).
+2. How to open a protocol (`OpenProtocol`) on a handle.
+3. How to invoke function pointers inside a protocol structure (`PciIo->Pci.Read`).
+4. How PCI enumeration works at the firmware level.
+
+### Day 2 Screenshot
+

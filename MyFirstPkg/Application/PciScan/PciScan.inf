@@ -1,0 +1,22 @@
+[Defines]
+INF_VERSION			= 0x00010005
+BASE_NAME			= PciScan
+FILE_GUID			= AABBCCDD-1234-5678-90AB-AABBCCDDEEFF
+MODULE_TYPE			= UEFI_APPLICATION
+VERSION_STRING			= 1.0
+ENTRY_POINT			= UefiMain
+
+[Sources]
+PciScan.c
+
+[Packages]
+MdePkg/MdePkg.dec
+
+[LibraryClasses]
+UefiApplicationEntryPoint
+UefiLib
+UefiBootServicesTableLib
+MemoryAllocationLib
+
+[Protocols]
+gEfiPciIoProtocolGuid
