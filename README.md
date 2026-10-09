@@ -62,4 +62,4 @@ qemu-system-x86_64 -enable-kvm -m 2048 -bios /usr/share/ovmf/OVMF.fd -drive file
 
 
 Screenshot
-![UEFI Hello World in QEMU](./HelloUEFI.png)
+![UEFI Hello World in QEMU](HelloUEFI.png)
