@@ -32,20 +32,25 @@ repo documents my daily progress, experiments and lessons learned.
 
 EDK II require **explicit declaration** of every single library in the `.dsc`
 file. It does NOT auto-resolve like Windows Visual Studio. The following
-libraries were added to the `\[LibraryClasses]` section: | Library Class | Why
-it was Needed  | |---|---| | `UefiApplicationEntryPoint` | Provides the `UefiMain`
-entry point | | `UefiLib`|Provides `Print()` | | `PrintLib`|String formatting |
-| `RegisterFilterLib` | New security requirement for `PrintLib` | | `PcdLib` |
-Required by `UefiLib` | | `MemoryAllocationLib` | Required by `UefiLib` | | `
-UefiBootServicesTableLib` | Provides `gBS` and `gST` pointers | | `
-UefiRuntimeServicesTableLib` | Provides `gRT` pointer | | `BaseLib` / `
-BaseMemoryLib` | Core Primitives | | `DebugLib` / `DebugPrintErrorLevelLib` |
-Debug output | | `DevicePathLib` | Required by `UefiLib` | | `StackCheckLib` / `
-StackCheckFailureHookLib` | New stack Protection (use Null implementation) |
+libraries were added to the `\[LibraryClasses]`
+ section:
+ | Library Class | Whyit was Needed  | 
+|---|---| 
+| `UefiApplicationEntryPoint` | Provides the `UefiMain`entry point | 
+| `UefiLib`|Provides `Print()` | `PrintLib`|String formatting |
+| `RegisterFilterLib` | New security requirement for `PrintLib` |
+| `PcdLib` |Required by `UefiLib` |
+| `MemoryAllocationLib` | Required by `UefiLib` |
+| `UefiBootServicesTableLib` | Provides `gBS` and `gST` pointers |
+| `UefiRuntimeServicesTableLib` | Provides `gRT` pointer |
+| `BaseLib` / `BaseMemoryLib` | Core Primitives |
+| `DebugLib` / `DebugPrintErrorLevelLib` | Debug output |
+| `DevicePathLib` | Required by `UefiLib` |
+| `StackCheckLib` / `StackCheckFailureHookLib` | New stack Protection (use Null implementation) |
 
 ### Common Pitfall
 
-- `\#include \<Library/Uefi.h>` is **wrong**. It should be `\#include \<Uefi.h>`
+- `#include <Library/Uefi.h>` is **wrong**. It should be `#include <Uefi.h>`
   (no `Library/` prefix).
 
 ## How to Build and Run
@@ -84,8 +89,6 @@ Output in QEMU UEFI Shell:
 - `0x8086:0x7113` (Intel ACPI Controller)
 - `0x1234:0x1111` (QEMU Virtual VGA)
 
-
-
 This proves  I understand:
 1. How to locate handles by protocol (`LocateHandleBuffer`).
 2. How to open a protocol (`OpenProtocol`) on a handle.
@@ -96,5 +99,4 @@ This proves  I understand:
 Day 2 Screenshot
 
 ![DeviceId and VendorId](./PciScan.png)
-  ```
 
