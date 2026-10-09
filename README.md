@@ -55,7 +55,6 @@ libraries were added to the `\[LibraryClasses]`
 
 ## How to Build and Run
 
-```bash
 ### 1.Set up EDK II envronment
 cd ~/src/edk2
 source edksetup.sh
