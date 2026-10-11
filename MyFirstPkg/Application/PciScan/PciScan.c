@@ -18,6 +18,8 @@ UefiMain(
 	EFI_PCI_IO_PROTOCOL	*PciIo;
 	UINT16			VendorId;
 	UINT16			DeviceId;
+	UINT8			ClassCode;
+	UINT8			SubClass;
 
 	Print(L"===========================================\n");
 
@@ -48,8 +50,10 @@ UefiMain(
 
 		PciIo->Pci.Read(PciIo,EfiPciIoWidthUint16, 0x00, 1, &VendorId);
 		PciIo->Pci.Read(PciIo, EfiPciIoWidthUint16, 0x02, 1, &DeviceId);
+		PciIo->Pci.Read(PciIo, EfiPciIoWidthUint8, 0x0B, 1, &ClassCode);
+		PciIo->Pci.Read(PciIo, EfiPciIoWidthUint8, 0x0A, 1, &SubClass);
 		
-		Print(L"PCI Device [%02d]: Vendor ID = 0x%04X, Devie ID = 0x%04X\n",Index, VendorId, DeviceId);
+		Print(L"PCI Device [%02d]: Vendor ID = 0x%04X, Devie ID = 0x%04X, Class = 0x%02X, SubClass = 0x%02X\n",Index, VendorId, DeviceId, ClassCode, SubClass);
 
 		// close Protocol
 		gBS->CloseProtocol(HandleBuffer[Index], &gEfiPciIoProtocolGuid, ImageHandle, NULL);

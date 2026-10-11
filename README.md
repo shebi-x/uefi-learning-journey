@@ -99,3 +99,27 @@ Day 2 Screenshot
 
 ![DeviceId and VendorId](./PciScan.png)
 
+
+
+## Day 3: Identifying PCI Device Classes (2026-10-11)
+
+Extended my `PciScan` application to read the **Class Code** (offset 0x0B) and **SubClass** (offset 0x0A) from the PCI configuration space.
+
+This allows me to identify the *type* of hardware based on its Class Code. Here is the actual output from QEMU running my `PciScan.efi`:
+
+![PCI Class](./PrintPciClass.png)
+
+=================================
+PCI Device [00]: Vendor ID = 0x8086, Device ID = 0x1237, Class = 0x06, SubClass = 0x00
+PCI Device [01]: Vendor ID = 0x8086, Device ID = 0x7000, Class = 0x06, SubClass = 0x01
+PCI Device [02]: Vendor ID = 0x8086, Device ID = 0x7010, Class = 0x01, SubClass = 0x01
+PCI Device [03]: Vendor ID = 0x8086, Device ID = 0x7113, Class = 0x06, SubClass = 0x00
+PCI Device [04]: Vendor ID = 0x1234, Device ID = 0x1111, Class = 0x03, SubClass = 0x00
+Scan Complete.
+=================================
+Decoded device types from the actual output above:
+Device [00] & [01] & [03]: Class 0x06 = Bridge Device (Host, ISA, ACPI controllers)
+Device [02]: Class 0x01, SubClass 0x01 = Mass Storage Controller (IDE Controller)
+Device [04]: Class 0x03, SubClass 0x00 = Display Controller (VGA Compatible)
+
+This is highly relevant to my laptop repair business. When a device is "not recognized," I can now use a firmware-level tool to check if the hardware is even presenting its Class Code correctly to the system (e.g., looking for Class 0x02 for Network Controller).
