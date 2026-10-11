@@ -108,7 +108,7 @@ Extended my `PciScan` application to read the **Class Code** (offset 0x0B) and *
 This allows me to identify the *type* of hardware based on its Class Code. Here is the actual output from QEMU running my `PciScan.efi`:
 
 ![PCI Class](./PrintPciClass.png)
-
+```text
 =================================
 PCI Device [00]: Vendor ID = 0x8086, Device ID = 0x1237, Class = 0x06, SubClass = 0x00
 PCI Device [01]: Vendor ID = 0x8086, Device ID = 0x7000, Class = 0x06, SubClass = 0x01
