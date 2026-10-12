@@ -123,3 +123,17 @@ Device [02]: Class 0x01, SubClass 0x01 = Mass Storage Controller (IDE Controller
 Device [04]: Class 0x03, SubClass 0x00 = Display Controller (VGA Compatible)
 
 This is highly relevant to my laptop repair business. When a device is "not recognized," I can now use a firmware-level tool to check if the hardware is even presenting its Class Code correctly to the system (e.g., looking for Class 0x02 for Network Controller).
+```
+## Day 4: Enumeration USB Devices (2026-10-12)
+
+Applied the Protocol-enumeration pattern to USB devices. My `UsbScan` application:
+1. Uses `gBS->LocateHandleBuffer` to find all `gEfiProtocolGuid` handles.
+2. Open each handle and calls `UsbIo->UsbGetDeviceDescriptor`.
+3. Prints Vendor ID, Product ID, abd Class Code.
+
+### QEMU Output Screenshot
+![USB Device QEMU Output](./USBScan.png)
+
+(Note: Class 0x00 indicates a composite device whose class is defined at the Interface level, not the Device level.)
+
+This directly relates to my laptop repair business: if a USB port fails to recognize a device, this tool helps determine whether the firmware is even presenting the device to the OS, distinguishing a hardware/firmware issue from a driver issue.

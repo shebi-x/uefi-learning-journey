@@ -27,3 +27,4 @@ StackCheckLib|MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
 [Components]
 MyFirstPkg/Application/MyHello/MyHello.inf
 MyFirstPkg/Application/PciScan/PciScan.inf
+MyFirstPkg/Application/UsbScan/UsbScan.inf
